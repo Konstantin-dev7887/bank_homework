@@ -32,7 +32,7 @@ def log(filename: str | None = None) \
             except Exception as exception:
                 message = (
                     f"{function.__name__}{ERR_PREFIX} "
-                    f"{type(exception).__name__}."
+                    f"{type(exception).__name__}: {exception}. "
                     f"{INPUTS_LABEL} {args}, {kwargs}"
                 )
                 _write(message, filename)
