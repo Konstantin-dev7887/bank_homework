@@ -8,7 +8,7 @@ import pytest
 @pytest.fixture
 def operations() -> List[Dict[str, Any]]:
     """
-    Набор тестовых операций для проверки функций filter_by_state и sort_by_date.
+    Набор тестовых операций для проверки
     """
     return [
         {"id": 1, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},

@@ -9,7 +9,8 @@ from src.widget import get_date, mask_account_card
     ("", ""),
     (None, ""),
 ])
-def test_mask_account_card(account_card: str | None, account_card_mask: str) -> None:
+def test_mask_account_card(account_card: str | None,
+                           account_card_mask: str) -> None:
     assert mask_account_card(account_card) == account_card_mask
 
 

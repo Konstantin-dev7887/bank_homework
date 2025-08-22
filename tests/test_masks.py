@@ -14,7 +14,8 @@ from src.masks import get_mask_account, get_mask_card_number
         ("123", ""),
     ],
 )
-def test_get_mask_card_number(card_number: str, expected_card_number_mask: str) -> None:
+def test_get_mask_card_number(card_number: str,
+                              expected_card_number_mask: str) -> None:
     assert get_mask_card_number(card_number) == expected_card_number_mask
 
 
