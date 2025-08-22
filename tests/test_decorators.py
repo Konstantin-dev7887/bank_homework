@@ -35,8 +35,8 @@ def test_log_console_error(capsys: pytest.CaptureFixture[str]) -> None:
     assert INPUTS_TOKEN in out
 
 
-def test_log_file_ok(path: Path) -> None:
-    logfile = path / "mylog.txt"
+def test_log_file_ok(tmp_path: Path) -> None:
+    logfile = tmp_path / "mylog.txt"
 
     @log(filename=str(logfile))
     def mul(x: int, y: int) -> int:
@@ -48,8 +48,8 @@ def test_log_file_ok(path: Path) -> None:
     assert f"{mul.__name__}{OK_SUFFIX}" in lines
 
 
-def test_log_file_error(path: Path) -> None:
-    logfile = path / "mylog.txt"
+def test_log_file_error(tmp_path: Path) -> None:
+    logfile = tmp_path / "mylog.txt"
     message: Final[str] = "boom"
 
     @log(filename=str(logfile))
