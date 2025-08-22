@@ -1,5 +1,6 @@
 from src.processing import filter_by_state, sort_by_date
 
+
 def test_filter_by_state_default():
     operations = [
         {"id": 1, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
@@ -8,6 +9,7 @@ def test_filter_by_state_default():
     ]
     filtered_operations = filter_by_state(operations)
     assert [operation["id"] for operation in filtered_operations] == [1, 2]
+
 
 def test_sort_by_date_desc():
     operations = [
