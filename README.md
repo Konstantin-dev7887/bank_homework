@@ -2,6 +2,7 @@
 ==========================
 
 Проект для обработки и маскирования банковских операций:
+
 - фильтрация по статусу,
 - сортировка по дате,
 - маскирование карт и счетов.
@@ -10,8 +11,8 @@
 Установка и настройка окружения
 --------------------------------
 python -m venv .venv
-source .venv/bin/activate   # Linux/Mac
-.venv\Scripts\activate      # Windows
+source .venv/bin/activate # Linux/Mac
+.venv\Scripts\activate # Windows
 
 (при использовании poetry можно poetry install)
 
@@ -78,6 +79,25 @@ source .venv/bin/activate   # Linux/Mac
     # 0000 0000 0000 0002
     # 0000 0000 0000 0003
 
+Пример работы с модулем decorators:
+
+    from src.decorators import log
+
+    @log()  # лог в консоль
+    def add(x, y):
+        return x + y
+
+    @log(filename="mylog.txt")  # лог в файл
+    def div(x, y):
+        return x // y
+
+    add(1, 2)       # -> вывод в консоль: "add ok"
+    try:
+        div(1, 0)
+    except ZeroDivisionError:
+        pass
+    # mylog.txt: "div error: ZeroDivisionError. Inputs: (1, 0), {}"
+
 Тестирование
 -------------
 Для запуска тестов используется pytest:
@@ -101,6 +121,7 @@ source .venv/bin/activate   # Linux/Mac
 GitFlow
 --------
 Разработка ведётся по GitFlow:
+
 - основная ветка - main
 - рабочая ветка - develop
 - домашние задания выполняются в ветках feature/
