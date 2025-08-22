@@ -31,11 +31,14 @@ def get_mask_card_number(card_number: str | None) -> str:
 
     first_six_symbols = digits[:VISIBLE_CARD_PREFIX]
     last_four_symbols = digits[-VISIBLE_CARD_SUFFIX:]
-    middle_symbols = MASK_SYMBOL * (len(digits) - VISIBLE_CARD_PREFIX - VISIBLE_CARD_SUFFIX)
+    middle_symbols = MASK_SYMBOL * (len(digits) -
+                                    VISIBLE_CARD_PREFIX -
+                                    VISIBLE_CARD_SUFFIX)
 
     masked = f"{first_six_symbols}{middle_symbols}{last_four_symbols}"
 
-    return " ".join(masked[i: i + GROUP_SIZE] for i in range(0, len(masked), GROUP_SIZE))
+    return " ".join(masked[i: i + GROUP_SIZE]
+                    for i in range(0, len(masked), GROUP_SIZE))
 
 
 def get_mask_account(account: str | None) -> str:
