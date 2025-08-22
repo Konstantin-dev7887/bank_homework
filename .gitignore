@@ -8,5 +8,5 @@ htmlcov/
 
 # coverage artifacts
 .coverage
-coverage_html/**
-!coverage_html/**/*.html
+coverage_html/*
+!coverage_html/index.html
