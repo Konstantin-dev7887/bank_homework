@@ -5,6 +5,7 @@
 - фильтрация по статусу,
 - сортировка по дате,
 - маскирование карт и счетов.
+- генераторы для работы с транзакциями.
 
 Установка и настройка окружения
 --------------------------------
@@ -43,6 +44,39 @@ source .venv/bin/activate   # Linux/Mac
 
     print(mask_account_card("Visa Classic 4111 1111 1111 1111")) # -> Visa Classic 4111 11** **** 1111
     print(get_date("2019-07-03T18:35:29.512364"))                # -> 03.07.2019
+
+Пример работы с модулем generators:
+
+    from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
+
+    # filter_by_currency
+    transactions = [
+        {
+            "id": 1,
+            "operationAmount": {"amount": "100.00", "currency": {"code": "USD"}},
+            "description": "Перевод организации",
+        },
+        {
+            "id": 2,
+            "operationAmount": {"amount": "200.00", "currency": {"code": "RUB"}},
+            "description": "Перевод со счета на счет",
+        },
+    ]
+
+    usd_operations = list(filter_by_currency(transactions, "USD"))
+    print(usd_operations)   # только транзакции в USD
+
+    # transaction_descriptions
+    for description in transaction_descriptions(transactions):
+        print(description)     # печатает описания транзакций
+
+    # card_number_generator
+    for card_number in card_number_generator(1, 3):
+        print(card_number)
+
+    # 0000 0000 0000 0001
+    # 0000 0000 0000 0002
+    # 0000 0000 0000 0003
 
 Тестирование
 -------------
