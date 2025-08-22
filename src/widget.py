@@ -33,7 +33,7 @@ def mask_account_card(account_card: str | int | None) -> str:
     if not digits:
         return ""
 
-    lower_account_card = account_card.lower()
+    lower_account_card = account_card_text.lower()
 
     is_card = any(brand in lower_account_card for brand in CARD_BRANDS) or len(digits) >= 16
 
