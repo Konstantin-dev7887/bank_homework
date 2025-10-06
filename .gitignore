@@ -5,8 +5,4 @@ __pycache__/
 .pytest_cache/
 htmlcov/
 .idea/
-
-# coverage artifacts
-.coverage
-coverage_html/*
-!coverage_html/index.html
+coverage_html/
