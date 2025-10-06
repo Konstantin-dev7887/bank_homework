@@ -51,7 +51,8 @@ def get_mask_card_number(card_number: str | None) -> str:
     digits = "".join(symbol for symbol in card_number if symbol.isdigit())
 
     if len(digits) < MIN_CARD_LENGTH:
-        logger.error("get_mask_card_number: too short (%d digits)", len(digits))
+        logger.error("get_mask_card_number: too short (%d digits)",
+                     len(digits))
         return ""
 
     first_six_symbols = digits[:VISIBLE_CARD_PREFIX]
@@ -83,7 +84,8 @@ def get_mask_account(account: str | None) -> str:
     digits = "".join(symbol for symbol in account if symbol.isdigit())
 
     if len(digits) < VISIBLE_CARD_SUFFIX:
-        logger.error("get_mask_account: less than %d digits", VISIBLE_CARD_SUFFIX)
+        logger.error("get_mask_account: less than %d digits",
+                     VISIBLE_CARD_SUFFIX)
         return ""
 
     last_four_symbols = digits[-VISIBLE_CARD_SUFFIX:]
@@ -95,6 +97,7 @@ def get_mask_account(account: str | None) -> str:
     elif account.startswith(ACCOUNT_PREFIX_2):
         prefix = ACCOUNT_PREFIX_2
 
-    logger.info("get_mask_account: masked account produced with suffix ****%s", last_four_symbols)
+    logger.info("get_mask_account: masked account produced with suffix ****%s",
+                last_four_symbols)
 
     return f"{prefix}{ACCOUNT_MASK_PREFIX}{last_four_symbols}"
