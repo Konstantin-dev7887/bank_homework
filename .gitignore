@@ -7,3 +7,4 @@ htmlcov/
 .idea/
 coverage_html/
 logs/*.log
+/.env/
