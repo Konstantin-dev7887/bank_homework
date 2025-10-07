@@ -7,7 +7,9 @@ from unittest.mock import Mock, patch
 
 import pandas as pd
 
-from src.utils import read_transactions_json, read_transactions_excel, read_transactions_csv
+from src.utils import (read_transactions_csv,
+                       read_transactions_excel,
+                       read_transactions_json)
 
 
 def test_read_transactions_ok(tmp_path: Path) -> None:
@@ -61,13 +63,15 @@ def test_read_transactions_csv_empty_data_frame(read_csv_mock: Mock) -> None:
 
 
 @patch("src.utils.pd.read_csv")
-def test_read_transactions_csv_missing_file_returns_empty(read_csv_mock: Mock) -> None:
+def test_read_transactions_csv_missing_file_returns_empty(
+        read_csv_mock: Mock) -> None:
     assert read_transactions_csv("no_such.csv") == []
     read_csv_mock.assert_not_called()
 
 
 @patch("src.utils.pd.read_csv")
-def test_read_transactions_csv_error_returns_empty(read_csv_mock: Mock, tmp_path: Path) -> None:
+def test_read_transactions_csv_error_returns_empty(read_csv_mock: Mock,
+                                                   tmp_path: Path) -> None:
     p = tmp_path / "broken.csv"
     p.write_text("id,amount,currency\n", encoding="utf-8")
 
@@ -98,13 +102,16 @@ def test_read_transactions_excel_empty_df(read_excel_mock: Mock) -> None:
 
 
 @patch("src.utils.pd.read_excel")
-def test_read_transactions_excel_missing_file_returns_empty(read_excel_mock: Mock) -> None:
+def test_read_transactions_excel_missing_file_returns_empty(
+        read_excel_mock: Mock) -> None:
     assert read_transactions_excel("no_such.xlsx") == []
     read_excel_mock.assert_not_called()
 
 
 @patch("src.utils.pd.read_excel")
-def test_read_transactions_excel_error_returns_empty(read_excel_mock: Mock, tmp_path: Path) -> None:
+def test_read_transactions_excel_error_returns_empty(
+        read_excel_mock: Mock,
+        tmp_path: Path) -> None:
     path = tmp_path / "broken.xlsx"
     path.write_bytes(b"")
 
