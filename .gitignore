@@ -6,4 +6,5 @@ __pycache__/
 htmlcov/
 .idea/
 coverage_html/
+logs/*.log
 /.env/
