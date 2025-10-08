@@ -97,6 +97,13 @@ source .venv/bin/activate # Linux/Mac
         pass
     # mylog.txt: "div error: ZeroDivisionError. Inputs: (1, 0), {}"
 
+Пример работы с модулем decorators: Чтение из CSV/XLSX:
+
+    from src.utils import read_transactions_csv, read_transactions_excel
+    
+    csv_operations = read_transactions_csv("data/transactions.csv")
+    xlsx_operations = read_transactions_excel("data/transactions_excel.xlsx")  # sheet_name=0 по умолчанию
+
 Тестирование
 -------------
 Для запуска тестов используется pytest:
