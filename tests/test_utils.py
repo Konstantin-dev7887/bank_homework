@@ -7,7 +7,7 @@ from unittest.mock import Mock, patch
 
 import pandas as pd
 
-from src.utils import read_transactions_json, read_transactions_excel, read_transactions_csv
+from src.utils import read_transactions_csv, read_transactions_excel, read_transactions_json
 
 
 def test_read_transactions_ok(tmp_path: Path) -> None:
